@@ -25,18 +25,39 @@ public class string {
         for (String word : words) {
             if (word.length() > 0) {
                 result.append(Character.toUpperCase(word.charAt(0)))
-                      .append(word.substring(1))
-                      .append(" ");
+                        .append(word.substring(1))
+                        .append(" ");
             }
         }
 
         return result.toString().trim(); // remove trailing space
     }
 
+    public  boolean isAnagram(String s, String t) {
+        if (s.length() != t.length())
+            return false;
+
+        int[] count = new int[26]; // only lowercase English letters
+
+        for (int i = 0; i < s.length(); i++) {
+            count[s.charAt(i) - 'a']++; // increment for s
+            count[t.charAt(i) - 'a']--; // decrement for t
+        }
+
+        for (int val : count) {
+            if (val != 0)
+                return false;
+        }
+
+        return true;
+    }
 
     public static void main(String[] args) {
-        System.out.println(isPalindrome("mom"));
-        System.out.println(capitalizeEachWord("mom is good"));
-        
+        // System.out.println(isPalindrome("mom"));
+        // System.out.println(capitalizeEachWord("mom is good"));
+
+        string obj = new string();
+        System.out.println(obj.isAnagram("anagram", "nagaram")); // true
+
     }
 }
