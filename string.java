@@ -52,12 +52,30 @@ public class string {
         return true;
     }
 
+    public static String reverseString(String s) {
+        char[] chars = s.toCharArray();
+        int left = 0, right = chars.length - 1;
+        while (left < right) {
+            // swap characters
+            char temp = chars[left];
+            chars[left] = chars[right];
+            chars[right] = temp;
+            
+            left++;
+            right--;
+        }
+        return new String(chars);
+    }
+    
+
     public static void main(String[] args) {
         // System.out.println(isPalindrome("mom"));
         // System.out.println(capitalizeEachWord("mom is good"));
 
-        string obj = new string();
-        System.out.println(obj.isAnagram("anagram", "nagaram")); // true
+        // string obj = new string();
+        // System.out.println(obj.isAnagram("anagram", "nagaram")); // true
+
+        System.out.print(reverseString("Manik"));
 
     }
 }
