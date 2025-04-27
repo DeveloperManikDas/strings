@@ -33,7 +33,7 @@ public class string {
         return result.toString().trim(); // remove trailing space
     }
 
-    public  boolean isAnagram(String s, String t) {
+    public boolean isAnagram(String s, String t) {
         if (s.length() != t.length())
             return false;
 
@@ -60,13 +60,23 @@ public class string {
             char temp = chars[left];
             chars[left] = chars[right];
             chars[right] = temp;
-            
+
             left++;
             right--;
         }
         return new String(chars);
     }
-    
+
+    public static int countVowels(String s) {
+        int count = 0;
+        String vowels = "aeiouAEIOU";
+        for (int i = 0; i < s.length(); i++) {
+            if (vowels.indexOf(s.charAt(i)) != -1) {
+                count++;
+            }
+        }
+        return count;
+    }
 
     public static void main(String[] args) {
         // System.out.println(isPalindrome("mom"));
@@ -75,7 +85,9 @@ public class string {
         // string obj = new string();
         // System.out.println(obj.isAnagram("anagram", "nagaram")); // true
 
-        System.out.print(reverseString("Manik"));
+        // System.out.println(reverseString("panic"));
+        System.out.print(countVowels("Manoeik"));
+
 
     }
 }
