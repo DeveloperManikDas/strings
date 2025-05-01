@@ -98,6 +98,22 @@ public class string {
         return maxLen;
     }
 
+    public static boolean canPermutePalindrome(String s) {
+        int[] count = new int[26];
+        for (char c : s.toCharArray()) {
+            count[c - 'a']++;
+        }
+
+        int oddCount = 0;
+        for (int freq : count) {
+            if (freq % 2 != 0) {
+                oddCount++;
+            }
+        }
+
+        return oddCount <= 1;
+    }
+
     public static void main(String[] args) {
         // System.out.println(isPalindrome("mom"));
         // System.out.println(capitalizeEachWord("mom is good"));
@@ -108,6 +124,8 @@ public class string {
         // System.out.println(reverseString("panic"));
         // System.out.print(countVowels("Manoeik"));
         System.out.print(lengthOfLongestSubstring("qwe"));
+        System.out.print(canPermutePalindrome("qwe"));
+        
         
 
 
