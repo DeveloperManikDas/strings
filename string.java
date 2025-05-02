@@ -79,8 +79,9 @@ public class string {
     }
 
     public static int lengthOfLongestSubstring(String s) {
-        int[] index = new int[128];  // ASCII size
-        for (int i = 0; i < 128; i++) index[i] = -1;
+        int[] index = new int[128]; // ASCII size
+        for (int i = 0; i < 128; i++)
+            index[i] = -1;
 
         int maxLen = 0, start = 0;
 
@@ -88,7 +89,7 @@ public class string {
             char c = s.charAt(end);
 
             if (index[c] >= start) {
-                start = index[c] + 1;  // Move start past the last duplicate
+                start = index[c] + 1; // Move start past the last duplicate
             }
 
             index[c] = end;
@@ -114,6 +115,22 @@ public class string {
         return oddCount <= 1;
     }
 
+    public static int firstUniqChar(String s) {
+        int[] count = new int[26];
+
+        for (char c : s.toCharArray()) {
+            count[c - 'a']++;
+        }
+
+        for (int i = 0; i < s.length(); i++) {
+            if (count[s.charAt(i) - 'a'] == 1) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
     public static void main(String[] args) {
         // System.out.println(isPalindrome("mom"));
         // System.out.println(capitalizeEachWord("mom is good"));
@@ -123,11 +140,9 @@ public class string {
 
         // System.out.println(reverseString("panic"));
         // System.out.print(countVowels("Manoeik"));
-        System.out.print(lengthOfLongestSubstring("qwe"));
-        System.out.print(canPermutePalindrome("qwe"));
-        
-        
-
+        // System.out.print(lengthOfLongestSubstring("qwe"));
+        // System.out.print(canPermutePalindrome("qwe"));
+        System.out.print(firstUniqChar("qqwe"));
 
     }
 }
