@@ -131,6 +131,20 @@ public class string {
         return -1;
     }
 
+    public static boolean checkIfPangram(String s) {
+        boolean[] seen = new boolean[26];
+
+        for (char c : s.toCharArray()) {
+            seen[c - 'a'] = true;
+        }
+
+        for (boolean b : seen) {
+            if (!b) return false;
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
         // System.out.println(isPalindrome("mom"));
         // System.out.println(capitalizeEachWord("mom is good"));
@@ -142,7 +156,9 @@ public class string {
         // System.out.print(countVowels("Manoeik"));
         // System.out.print(lengthOfLongestSubstring("qwe"));
         // System.out.print(canPermutePalindrome("qwe"));
-        System.out.print(firstUniqChar("qqwe"));
+        // System.out.print(firstUniqChar("qqwe"));
+        System.out.print(checkIfPangram("qqwe"));
+
 
     }
 }
