@@ -145,6 +145,22 @@ public class string {
         return true;
     }
 
+    public static boolean canConstruct(String ransomNote, String magazine) {
+        int[] count = new int[26];
+
+        for (char c : magazine.toCharArray()) {
+            count[c - 'a']++;
+        }
+
+        for (char c : ransomNote.toCharArray()) {
+            if (--count[c - 'a'] < 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
         // System.out.println(isPalindrome("mom"));
         // System.out.println(capitalizeEachWord("mom is good"));
@@ -157,7 +173,8 @@ public class string {
         // System.out.print(lengthOfLongestSubstring("qwe"));
         // System.out.print(canPermutePalindrome("qwe"));
         // System.out.print(firstUniqChar("qqwe"));
-        System.out.print(checkIfPangram("qqwe"));
+        // System.out.print(checkIfPangram("qqwe"));
+        System.out.print(canConstruct("manik", "maniktiya"));
 
 
     }
