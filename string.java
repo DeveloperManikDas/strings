@@ -139,7 +139,8 @@ public class string {
         }
 
         for (boolean b : seen) {
-            if (!b) return false;
+            if (!b)
+                return false;
         }
 
         return true;
@@ -161,6 +162,23 @@ public class string {
         return true;
     }
 
+    public static boolean isIsomorphic(String s, String t) {
+        int[] mapS = new int[256];
+        int[] mapT = new int[256];
+
+        for (int i = 0; i < s.length(); i++) {
+            if (mapS[s.charAt(i)] != mapT[t.charAt(i)]) {
+                return false;
+            }
+
+            // Mark their latest mapping position (i+1 to avoid default 0 confusion)
+            mapS[s.charAt(i)] = i + 1;
+            mapT[t.charAt(i)] = i + 1;
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
         // System.out.println(isPalindrome("mom"));
         // System.out.println(capitalizeEachWord("mom is good"));
@@ -174,8 +192,8 @@ public class string {
         // System.out.print(canPermutePalindrome("qwe"));
         // System.out.print(firstUniqChar("qqwe"));
         // System.out.print(checkIfPangram("qqwe"));
-        System.out.print(canConstruct("manik", "maniktiya"));
-
+        // System.out.print(canConstruct("manik", "maniktiya"));
+        System.out.print(isIsomorphic("manik", "maniktiya"));
 
     }
 }
