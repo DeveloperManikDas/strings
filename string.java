@@ -179,6 +179,14 @@ public class string {
         return true;
     }
 
+    public static boolean isRotation(String s1, String s2) {
+        if (s1.length() != s2.length()) return false;
+
+        String combined = s1 + s1;
+        return combined.contains(s2); // You could roll your own .contains with char arrays if needed
+    }
+
+
     public static void main(String[] args) {
         // System.out.println(isPalindrome("mom"));
         // System.out.println(capitalizeEachWord("mom is good"));
@@ -193,7 +201,9 @@ public class string {
         // System.out.print(firstUniqChar("qqwe"));
         // System.out.print(checkIfPangram("qqwe"));
         // System.out.print(canConstruct("manik", "maniktiya"));
-        System.out.print(isIsomorphic("manik", "maniktiya"));
+        // System.out.print(isIsomorphic("manik", "maniktiya"));
+        System.out.print(isRotation("man", "nam"));
 
     }
 }
+
