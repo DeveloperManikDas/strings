@@ -186,6 +186,30 @@ public class string {
         return combined.contains(s2); // You could roll your own .contains with char arrays if needed
     }
 
+    public static boolean isOneEditAway(String s, String t) {
+        int len1 = s.length(), len2 = t.length();
+        if (Math.abs(len1 - len2) > 1) return false;
+
+        String shorter = len1 < len2 ? s : t;
+        String longer = len1 < len2 ? t : s;
+
+        int i = 0, j = 0;
+        boolean foundDifference = false;
+
+        while (i < shorter.length() && j < longer.length()) {
+            if (shorter.charAt(i) != longer.charAt(j)) {
+                if (foundDifference) return false;
+                foundDifference = true;
+
+                if (len1 == len2) i++; // Replace
+            } else {
+                i++; // Same char, move both
+            }
+            j++; // Always move pointer for longer string
+        }
+
+        return true;
+    }
 
     public static void main(String[] args) {
         // System.out.println(isPalindrome("mom"));
@@ -202,7 +226,8 @@ public class string {
         // System.out.print(checkIfPangram("qqwe"));
         // System.out.print(canConstruct("manik", "maniktiya"));
         // System.out.print(isIsomorphic("manik", "maniktiya"));
-        System.out.print(isRotation("man", "nam"));
+        // System.out.print(isRotation("man", "nam"));
+        System.out.print(isOneEditAway("man", "nam"));
 
     }
 }
