@@ -211,6 +211,20 @@ public class string {
         return true;
     }
 
+    public static boolean detectCapitalUse(String word) {
+        int capitals = 0;
+        for (char c : word.toCharArray()) {
+            if (c >= 'A' && c <= 'Z') {
+                capitals++;
+            }
+        }
+
+        if (capitals == word.length()) return true; // All capitals
+        if (capitals == 0) return true;             // All lowercase
+        if (capitals == 1 && Character.isUpperCase(word.charAt(0))) return true; // Only first is capital
+
+        return false;
+    }
     public static void main(String[] args) {
         // System.out.println(isPalindrome("mom"));
         // System.out.println(capitalizeEachWord("mom is good"));
@@ -227,7 +241,8 @@ public class string {
         // System.out.print(canConstruct("manik", "maniktiya"));
         // System.out.print(isIsomorphic("manik", "maniktiya"));
         // System.out.print(isRotation("man", "nam"));
-        System.out.print(isOneEditAway("man", "nam"));
+        // System.out.print(isOneEditAway("man", "nam"));
+        System.out.print(detectCapitalUse("man"));
 
     }
 }
