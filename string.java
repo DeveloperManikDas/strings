@@ -225,6 +225,19 @@ public class string {
 
         return false;
     }
+
+  public static String toLowerCase(String s) {
+        char[] chars = s.toCharArray();
+
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] >= 'A' && chars[i] <= 'Z') {
+                chars[i] = (char)(chars[i] + 32);
+            }
+        }
+
+        return new String(chars);
+    }
+
     public static void main(String[] args) {
         // System.out.println(isPalindrome("mom"));
         // System.out.println(capitalizeEachWord("mom is good"));
@@ -242,7 +255,8 @@ public class string {
         // System.out.print(isIsomorphic("manik", "maniktiya"));
         // System.out.print(isRotation("man", "nam"));
         // System.out.print(isOneEditAway("man", "nam"));
-        System.out.print(detectCapitalUse("man"));
+        // System.out.print(detectCapitalUse("man"));
+        System.out.print(toLowerCase("man"));
 
     }
 }
