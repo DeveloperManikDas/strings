@@ -262,6 +262,21 @@ public class string {
         c = Character.toLowerCase(c);
         return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
     }
+
+    public static int strStr(String haystack, String needle) {
+        if (needle.length() == 0) return 0;
+
+        for (int i = 0; i <= haystack.length() - needle.length(); i++) {
+            int j = 0;
+            while (j < needle.length() && haystack.charAt(i + j) == needle.charAt(j)) {
+                j++;
+            }
+
+            if (j == needle.length()) return i;
+        }
+
+        return -1;
+    }
     public static void main(String[] args) {
         // System.out.println(isPalindrome("mom"));
         // System.out.println(capitalizeEachWord("mom is good"));
@@ -280,7 +295,9 @@ public class string {
         // System.out.print(isRotation("man", "nam"));
         // System.out.print(isOneEditAway("man", "nam"));
         // System.out.print(detectCapitalUse("man"));
-        System.out.print(toLowerCase("man"));
+        // System.out.print(toLowerCase("man"));
+        System.out.print(strStr("maanik", "nik"));
+
 
     }
 }
