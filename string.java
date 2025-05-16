@@ -277,6 +277,47 @@ public class string {
 
         return -1;
     }
+
+      public static int findMaxLength(int[] nums) {
+        int n = nums.length;
+        
+        // Replace 0 with -1 to find longest subarray with sum=0
+        for (int i = 0; i < n; i++) {
+            if (nums[i] == 0) nums[i] = -1;
+        }
+        
+        int maxLen = 0;
+        int prefixSum = 0;
+        
+        // prefixSum can be in range [-n, n], so size = 2*n + 1
+        int size = 2 * n + 1;
+        int[] firstOccurrence = new int[size];
+        
+        // Initialize with -2 meaning not occurred
+        for (int i = 0; i < size; i++) {
+            firstOccurrence[i] = -2;
+        }
+        
+        // prefixSum 0 occurs at index -1 (before array start)
+        firstOccurrence[n] = -1;  // offset by n
+        
+        for (int i = 0; i < n; i++) {
+            prefixSum += nums[i];
+            
+            int idx = prefixSum + n;  // offset index
+            
+            if (firstOccurrence[idx] != -2) {
+                // Calculate subarray length
+                int len = i - firstOccurrence[idx];
+                if (len > maxLen) maxLen = len;
+            } else {
+                // Store first occurrence of this prefix sum
+                firstOccurrence[idx] = i;
+            }
+        }
+        
+        return maxLen;
+    }
     public static void main(String[] args) {
         // System.out.println(isPalindrome("mom"));
         // System.out.println(capitalizeEachWord("mom is good"));
