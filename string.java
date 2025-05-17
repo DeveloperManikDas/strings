@@ -318,6 +318,23 @@ public class string {
         
         return maxLen;
     }
+
+     public static int maxProfit(int[] prices) {
+        int minPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+
+        for (int price : prices) {
+            if (price < minPrice) {
+                minPrice = price; // Found a better day to buy
+            } else {
+                maxProfit = Math.max(maxProfit, price - minPrice); // Potential profit
+            }
+        }
+
+        return maxProfit;
+    }
+
+   
     public static void main(String[] args) {
         // System.out.println(isPalindrome("mom"));
         // System.out.println(capitalizeEachWord("mom is good"));
